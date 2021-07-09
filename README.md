@@ -1,0 +1,1 @@
+# Plantilla para crear un bot de discord con Typescript.

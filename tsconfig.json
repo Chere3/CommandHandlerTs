@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"lib": [
+			"DOM"
+		],
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"removeComments": true,
+		"allowJs": true
+	},
+	"include": [
+		"./src"
+	],
+	"exclude": [
+		"./node_modules",
+		".vscode"
+	]
+}

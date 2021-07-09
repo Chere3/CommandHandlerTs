@@ -1,0 +1,1 @@
+export const owners = ["TU ID DE DISCORD", "LA ID DE OTRO OWNER (OPCIONAL)"]
