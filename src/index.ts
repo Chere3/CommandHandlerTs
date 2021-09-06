@@ -30,3 +30,17 @@ Manager.on("shardCreate", (shard) => {
     shard.on("reconnecting", () => global.prettyConsole.log(`Shard ${shard.id + 1} resumida.`))
     shard.on("ready", () => global.prettyConsole.log(`La shard ${shard.id + 1} esta lista.`))
 })
+
+process.on("rejectionHandled", (a) => {
+    global.prettyConsole.error(a)
+})
+
+process.on("uncaughtException", (a) => {
+    global.prettyConsole.error(a.name)
+    global.prettyConsole.error(a.message)
+    console.log(a.stack)
+})
+
+process.on("unhandledRejection", (a) => {
+    global.prettyConsole.error(a)
+})
