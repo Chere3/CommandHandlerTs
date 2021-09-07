@@ -5,8 +5,8 @@ import {
   Message,
   PermissionResolvable,
 } from "discord.js";
-import { owners } from "../assets/owners";
 import { TempContext } from "./Context";
+import { config } from "../../config";
 
 interface options {
   name: string;
@@ -40,7 +40,7 @@ export class BaseCommand {
   memberPermissions: string[];
   usage: any;
   example: any;
-  devs: typeof owners;
+  devs: typeof config.owners;
   constructor(client: Client, options: options) {
     this.bot = client;
     this.name = options.name;
@@ -60,6 +60,7 @@ export class BaseCommand {
   }
 
   canRun(msg, isDev: boolean) {
+    const owners = config.owners;
     const e = new MessageEmbed().setColor(0x00ff0000).setTimestamp();
 
     if (this.dev === true && !owners.includes(msg.author.id))
