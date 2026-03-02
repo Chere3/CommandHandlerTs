@@ -63,7 +63,7 @@ export class BaseSlashCommand {
       )
       .setTimestamp();
 
-    int.guild.members.fetch(`${int.member.id}`).then((x) => {
+    int.guild.members.fetch(`${int.user.id}`).then((x) => {
       if (this.dev == true) {
         if (!config.owners.includes(x.id)) {
           return int.reply({
@@ -92,7 +92,7 @@ export class BaseSlashCommand {
         if (!config.owners.includes(x.id)) {
           {
             const now = Date.now();
-            const time = this.cooldowns.get(int.member.id);
+            const time = this.cooldowns.get(int.user.id);
             const timeLeft = (time - now) / 1000;
             return int.reply({
               embeds: [
@@ -150,10 +150,10 @@ export class BaseSlashCommand {
   }
 
   checkCooldown(int: CommandInteraction) {
-    if (this.cooldowns.has(int.member.id)) return true;
-    this.cooldowns.set(int.member.id, Date.now() + this.cooldown * 1000);
+    if (this.cooldowns.has(int.user.id)) return true;
+    this.cooldowns.set(int.user.id, Date.now() + this.cooldown * 1000);
     setTimeout(() => {
-      this.cooldowns.delete(int.member.id);
+      this.cooldowns.delete(int.user.id);
     }, this.cooldown * 1000);
     return false;
   }

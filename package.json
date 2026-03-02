@@ -11,7 +11,8 @@
     "dev": "nodemon src/index.ts --exec \"ts-node src/index.ts\" -e ts,json",
     "typecheck": "tsc --noEmit",
     "build": "tsc -p tsconfig.json",
-    "test": "nodemon src/index.ts --exec \"ts-node src/index.ts\" -e ts,json"
+    "check": "npm run typecheck && npm run build",
+    "test": "npm run typecheck"
   },
   "keywords": [
     "bot-template",

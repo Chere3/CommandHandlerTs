@@ -52,6 +52,7 @@ src/
 - `npm run dev` → auto-reload development mode
 - `npm run typecheck` → TypeScript validation (no emit)
 - `npm run build` → compile project
+- `npm run check` → typecheck + build (CI-equivalent local gate)
 
 ## Environment variables
 
@@ -62,6 +63,8 @@ src/
 
 ## Quality and contribution
 
+- CI runs typecheck + build on pushes/PRs (`.github/workflows/ci.yml`)
+- See [docs/DEVELOPMENT.md](./docs/DEVELOPMENT.md) for onboarding and local checks
 - See [CONTRIBUTING.md](./CONTRIBUTING.md)
 - See [ROADMAP.md](./ROADMAP.md) for modernization priorities
 
