@@ -5,3 +5,5 @@
 
 # Keysnode_modules/
 dist/
+
+node_modules/
