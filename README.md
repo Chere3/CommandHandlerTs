@@ -61,6 +61,8 @@ src/
 | `TOKEN` | Discord bot token |
 | `MONGO_URI` | MongoDB connection string |
 
+The app now validates required environment variables at startup and exits early with a clear error when something is missing.
+
 ## Quality and contribution
 
 - CI runs typecheck + build on pushes/PRs (`.github/workflows/ci.yml`)
