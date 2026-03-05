@@ -2,15 +2,15 @@
 
 ## Quick wins (1-2 weeks)
 
-- [ ] Add CI workflow (install + typecheck + build)
+- [x] Add CI workflow (install + typecheck + build)
 - [ ] Add command/event architecture diagram in docs
-- [ ] Introduce `.env.example` + startup validation
-- [ ] Normalize naming (`README`, package metadata, repository URL)
+- [x] Introduce `.env.example` + startup validation
+- [x] Normalize naming (`README`, package metadata, repository URL)
 
 ## Medium improvements (2-4 weeks)
 
 - [ ] Migrate from ad-hoc command loading to explicit registry pattern
-- [ ] Add structured logging and error boundaries for event handlers
+- [x] Add structured startup error boundary for event handlers/bootstrap
 - [ ] Add unit tests for command metadata + permission guards
 - [ ] Add Docker development profile for local reproducibility
 

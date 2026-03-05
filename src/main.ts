@@ -16,34 +16,44 @@ global.prettyConsole = new Captain.Console({
   debug_prefix: "§bDebug",
 });
 
-const TempoClient = new Client({
-  intents: [
-    "DIRECT_MESSAGES",
-    "DIRECT_MESSAGE_REACTIONS",
-    "DIRECT_MESSAGE_TYPING",
-    "GUILDS",
-    "GUILD_BANS",
-    "GUILD_EMOJIS_AND_STICKERS",
-    "GUILD_INTEGRATIONS",
-    "GUILD_INVITES",
-    "GUILD_MEMBERS",
-    "GUILD_MESSAGES",
-    "GUILD_MESSAGE_REACTIONS",
-    "GUILD_MESSAGE_TYPING",
-    "GUILD_PRESENCES",
-    "GUILD_VOICE_STATES",
-    "GUILD_WEBHOOKS",
-  ],
-  allowedMentions: { repliedUser: false, parse: ["users"] },
+function createClient(): Client {
+  return new Client({
+    intents: [
+      "DIRECT_MESSAGES",
+      "DIRECT_MESSAGE_REACTIONS",
+      "DIRECT_MESSAGE_TYPING",
+      "GUILDS",
+      "GUILD_BANS",
+      "GUILD_EMOJIS_AND_STICKERS",
+      "GUILD_INTEGRATIONS",
+      "GUILD_INVITES",
+      "GUILD_MEMBERS",
+      "GUILD_MESSAGES",
+      "GUILD_MESSAGE_REACTIONS",
+      "GUILD_MESSAGE_TYPING",
+      "GUILD_PRESENCES",
+      "GUILD_VOICE_STATES",
+      "GUILD_WEBHOOKS",
+    ],
+    allowedMentions: { repliedUser: false, parse: ["users"] },
+  });
+}
+
+async function bootstrap(): Promise<void> {
+  const tempoClient = createClient();
+
+  tempoClient.slashCommands = new Collection();
+  tempoClient.commands = new Collection();
+
+  handlers(tempoClient);
+
+  await login;
+  global.prettyConsole.log("Conectado a MongoDB correctamente.");
+
+  await tempoClient.login(config.auth.token);
+}
+
+bootstrap().catch((error) => {
+  global.prettyConsole.error(`Startup failed: ${(error as Error).message}`);
+  process.exit(1);
 });
-
-TempoClient.slashCommands = new Collection();
-TempoClient.commands = new Collection();
-
-handlers(TempoClient);
-
-login.then(() => {
-  global.prettyConsole.log(`Se ha conectado a la database satisfactoriamente.`);
-});
-
-TempoClient.login(config.auth.token);
