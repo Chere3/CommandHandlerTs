@@ -61,6 +61,11 @@ src/
 | `TOKEN` | Discord bot token |
 | `MONGO_URI` | MongoDB connection string |
 
+## Runtime safety
+
+- Startup now validates required env vars (`TOKEN`, `MONGO_URI`) and fails fast with actionable errors.
+- Prevents partial boots with silent misconfiguration in production.
+
 ## Quality and contribution
 
 - CI runs typecheck + build on pushes/PRs (`.github/workflows/ci.yml`)
