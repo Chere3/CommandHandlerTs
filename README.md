@@ -50,9 +50,10 @@ src/
 
 - `npm run start` → run with `ts-node`
 - `npm run dev` → auto-reload development mode
+- `npm run lint` → static linting for TypeScript sources
 - `npm run typecheck` → TypeScript validation (no emit)
 - `npm run build` → compile project
-- `npm run check` → typecheck + build (CI-equivalent local gate)
+- `npm run check` → lint + typecheck + build (CI-equivalent local gate)
 
 ## Environment variables
 
